@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "../services/api";
+import axios from '../services/api';
 import "../Styles/BugForm.css"
 
 function BugForm({ onSubmitSuccess = () => {} }) {
@@ -23,7 +23,7 @@ function BugForm({ onSubmitSuccess = () => {} }) {
       setError("");
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("/projects/assigned", {
+        const res = await axios.get('/projects/assigned', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setProjects(res.data);

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios';
-import api from '../services/api';
+import axios from '../services/api';
 import BugStatusUpdateForm from './BugStatusUpdateForm';
 import '../Styles/BugTable.css';
 
@@ -55,7 +54,7 @@ function BugTable({ bugs, userRole = "ADMIN", onEdit, onAssignClick, developers 
     setLogForm({ text: "", image: null, submitting: false, error: "" });
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get(`http://localhost:8080/api/bugs/${bug.id}/logs`, {
+      const res = await axios.get(`/bugs/${bug.id}/logs`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setTimelineModal({ open: true, logs: res.data, loading: false, bugTitle: bug.title, bugStatus: bug.status });
@@ -83,12 +82,12 @@ function BugTable({ bugs, userRole = "ADMIN", onEdit, onAssignClick, developers 
       const formData = new FormData();
       if (logForm.text) formData.append("text", logForm.text);
       if (logForm.image) formData.append("image", logForm.image);
-      await axios.post(`http://localhost:8080/api/bugs/${currentBugId}/log`, formData, {
+      await axios.post(`/bugs/${currentBugId}/log`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setLogForm({ text: "", image: null, submitting: false, error: "" });
       // Refresh logs
-      const res = await axios.get(`http://localhost:8080/api/bugs/${currentBugId}/logs`, {
+      const res = await axios.get(`/bugs/${currentBugId}/logs`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setTimelineModal((prev) => ({ ...prev, logs: res.data }));
@@ -110,7 +109,7 @@ function BugTable({ bugs, userRole = "ADMIN", onEdit, onAssignClick, developers 
   const fetchProjectDevelopers = async (projectId) => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get(`http://localhost:8080/api/projects/${projectId}/developers`, {
+      const res = await axios.get(`/projects/${projectId}/developers`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProjectDevelopers(res.data);

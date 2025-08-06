@@ -25,7 +25,6 @@ import java.util.Set;
 @RestController
 @RequestMapping("/api/projects")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
 public class ProjectController {
 
     private final ProjectRepository projectRepository;

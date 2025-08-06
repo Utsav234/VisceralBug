@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "../services/api";
+import axios from '../services/api';
 import '../Styles/ProjectForm.css';
 
 function ProjectForm({ onCreated }) {
@@ -63,10 +63,6 @@ function ProjectForm({ onCreated }) {
       await axios.post('/projects', {
         name: form.name.trim(),
         description: form.description.trim(),
-      }, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
       });
 
       showMessage('✅ Project created successfully! 🎉', 'success');

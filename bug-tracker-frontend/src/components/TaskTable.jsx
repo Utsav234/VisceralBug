@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios from '../services/api';
 import ReactDOM from 'react-dom';
 import '../Styles/TaskTable.css';
 
@@ -13,7 +13,7 @@ const TaskTable = ({ tasks, onTaskUpdated, userRole = "TESTER", onAssignClick, t
         
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get(`http://localhost:8080/api/tasks/${task.id}/logs`, {
+            const response = await axios.get(`/tasks/${task.id}/logs`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             

@@ -93,7 +93,7 @@ const RegisterForm = () => {
     setMessage('');
     
     try {
-      await axios.post("/auth/register", formData);
+      await axios.post('/auth/register', formData);
       showMessage('User registered successfully! 🎉', 'success');
       setFormData({
         username: '',

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../services/api';
 import '../Styles/TaskForm.css';
 
 const TaskForm = ({ onTaskCreated }) => {
@@ -21,7 +21,7 @@ const TaskForm = ({ onTaskCreated }) => {
     const fetchProjects = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get('http://localhost:8080/api/projects/assigned', {
+            const response = await axios.get('/projects/assigned', {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setProjects(response.data);
@@ -78,7 +78,7 @@ const TaskForm = ({ onTaskCreated }) => {
                 formDataToSend.append('image', image);
             }
 
-            await axios.post('http://localhost:8080/api/tasks', formDataToSend, {
+            await axios.post('/tasks', formDataToSend, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'multipart/form-data'
