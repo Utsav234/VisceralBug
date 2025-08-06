@@ -1,0 +1,176 @@
+.bug-form-container {
+  width: 100%;
+  margin: 2rem auto;
+  padding: 2.5rem 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(52, 152, 219, 0.08);
+  max-width: 700px;
+}
+
+.bug-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 100%;
+}
+
+.bug-form h3 {
+  color: #2563eb;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.bug-form input,
+.bug-form textarea,
+.bug-form select {
+  width: 100%;
+  padding: 1rem;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #f8f9fa;
+  font-family: inherit;
+}
+
+.bug-form textarea {
+  min-height: 150px;
+  resize: vertical;
+  line-height: 1.6;
+  padding: 1.2rem;
+}
+
+.bug-form input:focus,
+.bug-form textarea:focus,
+.bug-form select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  background-color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.bug-form input::placeholder,
+.bug-form textarea::placeholder {
+  color: #95a5a6;
+  font-style: italic;
+}
+
+.bug-form select {
+  cursor: pointer;
+  color: #2c3e50;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.2em;
+  padding-right: 3rem;
+}
+
+.bug-form select option {
+  padding: 0.75rem;
+  background-color: white;
+  color: #2c3e50;
+}
+
+.bug-form input[type="file"] {
+  padding: 0.75rem;
+  border: 2px dashed #e0e0e0;
+  background-color: #fafbfc;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bug-form input[type="file"]:hover {
+  border-color: #2563eb;
+  background-color: #f0f4ff;
+}
+
+.bug-form input[type="file"]:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  background-color: #ffffff;
+}
+
+.bug-form button {
+  width: 100%;
+  padding: 1.2rem;
+  background: linear-gradient(135deg, #4a90e2 0%, #2563eb 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.15);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bug-form button:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #174ea6 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.25);
+}
+
+.bug-form button:active {
+  transform: translateY(0);
+}
+
+.bug-form button:disabled {
+  background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 2px 8px rgba(156, 163, 175, 0.15);
+}
+
+.error-message {
+  background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%);
+  color: #dc2626;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #dc2626;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.bug-form img {
+  max-width: 200px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 1rem auto;
+  display: block;
+  border: 2px solid #e5e7eb;
+}
+
+@media (max-width: 768px) {
+  .bug-form-container {
+    padding: 1.5rem 1rem;
+    margin: 1rem;
+  }
+  
+  .bug-form h3 {
+    font-size: 1.3rem;
+  }
+  
+  .bug-form input,
+  .bug-form textarea,
+  .bug-form select {
+    padding: 0.875rem;
+  }
+  
+  .bug-form button {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+} 

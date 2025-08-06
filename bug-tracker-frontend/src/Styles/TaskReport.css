@@ -1,0 +1,131 @@
+.task-report {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.task-report h2 {
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 28px;
+}
+
+.task-report .input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.task-report .input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.collapsible-section {
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.collapsible-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 15px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.collapsible-header:hover {
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+.collapsible-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.collapse-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.collapse-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.task-list {
+  padding: 20px;
+}
+
+.dropdown {
+  margin-bottom: 15px;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+}
+
+.dropdown:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.no-tasks-message {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  margin: 10px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .task-report {
+    padding: 10px;
+  }
+  
+  .task-report h2 {
+    font-size: 24px;
+  }
+  
+  .collapsible-header {
+    padding: 12px 15px;
+  }
+  
+  .collapsible-header h3 {
+    font-size: 16px;
+  }
+  
+  .task-list {
+    padding: 15px;
+  }
+} 

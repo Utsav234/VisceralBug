@@ -1,0 +1,48 @@
+!SESSION 2025-07-24 16:56:20.885 -----------------------------------------------
+eclipse.buildId=4.35.0.202504180233
+java.version=21.0.6
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.springframework.boot.ide.branding.sts4
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.springframework.boot.ide.branding.sts4
+
+!ENTRY ch.qos.logback.classic 1 0 2025-07-24 16:56:24.188
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY org.eclipse.lemminx.uber-jar 4 0 2025-07-24 16:56:24.496
+!MESSAGE bundle org.eclipse.lemminx.uber-jar:0.29.0 (328) Component descriptor entry 'OSGI-INF/*.xml' not found
+
+!ENTRY ch.qos.logback.classic 1 0 2025-07-24 16:56:43.375
+!MESSAGE Logback config file: C:\Users\avgav\Downloads\DBT Kit for CDAC Mumbai\DBT Kit for CDAC Mumbai\MySQL - SQL - Assignments\Bug_Tracking_App\bug-tracker-backend\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.7.0.20241001-1350.xml
+
+!ENTRY org.eclipse.ui 2 0 2025-07-24 16:56:43.929
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2025-07-24 16:56:43.929
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.ui 2 0 2025-07-24 16:56:44.525
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2025-07-24 16:56:44.525
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.mylyn.tasks.ui 2 0 2025-07-24 16:56:49.205
+!MESSAGE No search provider was registered. Tasks search is not available.
+
+!ENTRY org.eclipse.linuxtools.docker.core 4 0 2025-07-24 16:56:50.123
+!MESSAGE Failed to retrieve default connection settings
+!STACK 0
+java.lang.IllegalArgumentException: Malformed \uxxxx encoding.
+	at java.base/java.util.Properties.loadConvert(Properties.java:663)
+	at java.base/java.util.Properties.load0(Properties.java:457)
+	at java.base/java.util.Properties.load(Properties.java:409)
+	at org.eclipse.linuxtools.internal.docker.core.ShellConnectionSettingsProvider.getConnectionSettings(ShellConnectionSettingsProvider.java:55)
+	at org.eclipse.linuxtools.internal.docker.core.DefaultDockerConnectionSettingsFinder.getKnownConnectionSettings(DefaultDockerConnectionSettingsFinder.java:210)
+	at org.eclipse.linuxtools.docker.core.DockerConnectionManager.lambda$reloadConnections$0(DockerConnectionManager.java:64)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.egit.ui 2 0 2025-07-24 16:56:50.790
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\avgav'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.

@@ -1,0 +1,230 @@
+form {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+form h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 0.875rem;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #f8f9fa;
+}
+
+form input:focus,
+form select:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  background-color: #ffffff;
+}
+
+form input::placeholder {
+  color: #95a5a6;
+}
+
+/* Error input styling */
+form input.error-input {
+  border-color: #e74c3c;
+  background-color: #fdf2f2;
+}
+
+form input.error-input:focus {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2);
+}
+
+/* Error text styling */
+.error-text {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  display: block;
+  font-weight: 500;
+}
+
+/* Form group styling */
+.form-group {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+/* Message box styling */
+.message-box {
+  text-align: center;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+form div {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+form div span {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.2rem;
+  user-select: none;
+  transition: opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  width: 24px;
+  z-index: 1;
+}
+
+form div span:hover {
+  opacity: 0.7;
+}
+
+form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+form button {
+  width: 100%;
+  padding: 1rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+form button:hover:not(:disabled) {
+  background-color: #2980b9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form button:active {
+  transform: translateY(0);
+}
+
+form button:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+form button.submitting {
+  background-color: #95a5a6;
+  cursor: wait;
+}
+
+form p {
+  text-align: center;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+form p:empty {
+  display: none;
+}
+
+/* Success message styling */
+form p:not(:empty) {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+/* Error message styling */
+form p:not(:empty):contains('Error') {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.password-rules-box {
+  background: #f8f9fa;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1rem;
+  font-size: 0.98rem;
+  color: #2c3e50;
+  box-shadow: 0 2px 6px rgba(52, 152, 219, 0.04);
+}
+.password-rules-box strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+.password-rules-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.password-rules-box li {
+  margin-bottom: 0.3rem;
+  transition: color 0.2s, font-weight 0.2s;
+}
+
+@media (max-width: 480px) {
+  form {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  form h2 {
+    font-size: 1.5rem;
+  }
+  
+  form input,
+  form select,
+  form button {
+    padding: 0.75rem;
+  }
+} 

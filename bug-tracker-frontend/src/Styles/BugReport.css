@@ -1,0 +1,217 @@
+.bug-report {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.bug-report h2 {
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 28px;
+}
+
+.bug-report .input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.bug-report .input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.collapsible-section {
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.collapsible-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 15px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.collapsible-header:hover {
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+.collapsible-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.collapse-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.collapse-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.bug-list {
+  padding: 20px;
+}
+
+.dropdown {
+  margin-bottom: 15px;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+}
+
+.dropdown:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.no-bugs-message {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  margin: 10px 0;
+}
+
+.bug-form {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #475569;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.submit-button {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.submit-button:hover {
+  background-color: #1d4ed8;
+}
+
+.bug-list {
+  margin-top: 2rem;
+}
+
+.bug-list h3 {
+  margin-bottom: 1rem;
+  color: #1e293b;
+}
+
+.bug-title-filter-input {
+  margin-left: 20px;
+  padding: 8px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.bug-title-filter-input:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 2px #ede9fe;
+}
+.bug-report-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 18px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .bug-report {
+    padding: 10px;
+  }
+  
+  .bug-report h2 {
+    font-size: 24px;
+  }
+  
+  .collapsible-header {
+    padding: 12px 15px;
+  }
+  
+  .collapsible-header h3 {
+    font-size: 16px;
+  }
+  
+  .bug-list {
+    padding: 15px;
+  }
+} 

@@ -1,0 +1,483 @@
+.bug-table-container {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 20px 0;
+  width: 100%;
+  max-width: none;
+}
+
+.bug-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  table-layout: auto;
+}
+
+.bug-table th {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 15px 12px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bug-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.bug-table tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* Description column styling */
+.bug-table td:nth-child(2) { /* Description column */
+  max-width: 300px;
+  word-wrap: break-word;
+  white-space: normal;
+  line-height: 1.4;
+}
+
+/* Badge styling - matching TaskTable */
+.priority-badge,
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Status and Priority styling - Updated for badge approach */
+.bug-table td:nth-child(4) { /* Priority column */
+  text-align: center;
+}
+
+.bug-table td:nth-child(5) { /* Status column */
+  text-align: center;
+}
+
+
+
+
+
+/* Developer assignment dropdown - Updated to match TaskTable styling */
+.bug-table select {
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 12px;
+  background: white;
+  cursor: pointer;
+  min-width: 120px;
+}
+
+.bug-table select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Resolution input - Updated to match TaskTable styling */
+.bug-table input[type="text"] {
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 12px;
+  background: white;
+  min-width: 150px;
+}
+
+.bug-table input[type="text"]:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Action buttons - Updated to match TaskTable styling */
+.bug-table button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+  margin: 2px;
+}
+
+.bug-table button:hover {
+  background: #0056b3;
+}
+
+.bug-table button:active {
+  transform: translateY(0);
+}
+
+.report-bug-btn {
+  background: #dc3545 !important;
+}
+
+.report-bug-btn:hover {
+  background: #c82333 !important;
+}
+
+/* Empty state styling */
+.bug-table td:empty::before {
+  content: "—";
+  color: #95a5a6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .bug-table-container {
+    margin: 0.75rem 0;
+  }
+  
+  .bug-table th,
+  .bug-table td {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+  
+  .bug-table select,
+  .bug-table input[type="text"] {
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bug-table-container {
+    margin: 0.5rem 0;
+    overflow-x: auto;
+  }
+  
+  .bug-table th,
+  .bug-table td {
+    padding: 0.6rem;
+    font-size: 0.85rem;
+  }
+  
+  .bug-table button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+  
+  .bug-table select,
+  .bug-table input[type="text"] {
+    padding: 0.4rem;
+    font-size: 0.85rem;
+  }
+  
+  /* Description column styling for mobile */
+  .bug-table td:nth-child(2) {
+    max-width: 150px;
+  }
+  
+  /* Badge styling for mobile */
+  .priority-badge,
+  .status-badge {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+} 
+
+@media (max-width: 900px) {
+  .bug-table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+  }
+  .bug-table {
+    min-width: 700px;
+    width: max-content;
+  }
+}
+
+/* Modal styles for popups */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.4);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-content {
+  background: white;
+  border-radius: 8px;
+  max-width: 90%;
+  max-height: 80vh;
+  width: 600px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1001;
+}
+/* Modal Header */
+.modal-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Modal Body */
+.modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  height: 80vh;
+}
+
+.modal-content button {
+  margin-top: 1rem;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.modal-content button:hover {
+  background: #0056b3;
+} 
+
+/* Timeline/Log Modal Enhancements - Updated to match TaskTable styling */
+.modal-content ul {
+  margin: 0;
+  padding: 0;
+}
+
+.modal-content ul li {
+  border-left: 3px solid #007bff;
+  margin-bottom: 20px;
+  padding-left: 15px;
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 0 8px 8px 0;
+  position: relative;
+}
+
+.modal-content ul li:hover {
+  background: #f0f4f8;
+  border-left-color: #0056b3;
+}
+
+.modal-content ul li strong {
+  color: #007bff;
+  font-weight: 600;
+}
+
+.modal-content ul li img {
+  margin-top: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  max-width: 100px;
+  max-height: 100px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.modal-content ul li img:hover {
+  transform: scale(1.05);
+  border-color: #007bff;
+}
+
+.modal-content ul li span[role="img-link"] {
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 500;
+  margin-bottom: 4px;
+  display: inline-block;
+}
+
+/* Log Entry Structure - Matching TaskTable styling */
+.log-entry {
+  border-left: 3px solid #007bff;
+  margin-bottom: 20px;
+  padding-left: 15px;
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 0 8px 8px 0;
+}
+
+.log-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.log-user {
+  font-weight: 600;
+  color: #007bff;
+  font-size: 14px;
+}
+
+.log-status {
+  background: #007bff;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.log-time {
+  color: #666;
+  font-size: 12px;
+}
+
+.log-content {
+  margin-top: 10px;
+}
+
+.log-text {
+  margin: 10px 0;
+  color: #333;
+  line-height: 1.5;
+}
+
+.log-image {
+  margin-top: 10px;
+}
+
+.log-image img {
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  max-width: 100px;
+  max-height: 100px;
+}
+.modal-content h3 {
+  color: #1e293b;
+  font-size: 1.3rem;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.modal-content p, .modal-content div {
+  font-size: 1rem;
+  color: #334155;
+}
+.modal-content button {
+  margin-top: 1.5rem;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.4rem;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.modal-content button:hover {
+  background: #1d4ed8;
+  box-shadow: 0 4px 16px rgba(37,99,235,0.16);
+}
+
+/* Override for specific modal buttons */
+.modal-close-btn {
+  background: white !important;
+  color: #374151 !important;
+  border: 1px solid #cbd5e1 !important;
+  margin-top: 0 !important;
+  box-shadow: none !important;
+}
+
+.modal-close-btn:hover {
+  background: #f8fafc !important;
+  color: #1f2937 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.modal-submit-btn {
+  background: #2563eb !important;
+  color: white !important;
+  border: none !important;
+  margin-top: 0 !important;
+}
+
+.modal-submit-btn:hover {
+  background: #1d4ed8 !important;
+  box-shadow: 0 4px 16px rgba(37,99,235,0.16) !important;
+}
+
+.modal-submit-btn:disabled {
+  background: #9ca3af !important;
+  cursor: not-allowed !important;
+  opacity: 0.7 !important;
+} 
+
+/* Special case: single log entry in modal - fill width, reduce padding/margin */
+.modal-content ul.single-log li {
+  margin-bottom: 0;
+  padding: 24px 0 18px 0;
+  border-radius: 10px;
+  box-shadow: none;
+  border: none;
+  background: #f8f9fa;
+}
+.modal-content ul.single-log {
+  padding: 0;
+  margin: 0;
+} 
+
+.highlight-admin-reassign {
+  background-color: #fff3cd !important;
+  border-left: 6px solid #f59e42 !important;
+  border-right: 2px solid #f59e42 !important;
+  position: relative;
+}
+
+
+
+ 

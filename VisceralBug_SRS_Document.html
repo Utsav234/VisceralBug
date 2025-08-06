@@ -1,0 +1,1221 @@
+
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>VisceralBug - Software Requirements Specification</title>
+                
+                <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+                <script>
+                    mermaid.initialize({ startOnLoad: true });
+                </script>
+                
+            <style>
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                line-height: 1.6;
+                margin: 40px;
+                color: #333;
+                max-width: 1200px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            h1 {
+                color: #2c3e50;
+                border-bottom: 3px solid #3498db;
+                padding-bottom: 10px;
+                font-size: 2.5em;
+            }
+            h2 {
+                color: #34495e;
+                border-bottom: 2px solid #bdc3c7;
+                padding-bottom: 5px;
+                font-size: 1.8em;
+                margin-top: 30px;
+            }
+            h3 {
+                color: #7f8c8d;
+                font-size: 1.4em;
+                margin-top: 25px;
+            }
+            h4 {
+                color: #95a5a6;
+                font-size: 1.2em;
+                margin-top: 20px;
+            }
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                margin: 20px 0;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            th, td {
+                border: 1px solid #ddd;
+                padding: 12px;
+                text-align: left;
+            }
+            th {
+                background-color: #f2f2f2;
+                font-weight: bold;
+                color: #2c3e50;
+            }
+            tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            code {
+                background-color: #f4f4f4;
+                padding: 2px 6px;
+                border-radius: 3px;
+                font-family: 'Courier New', monospace;
+                color: #e74c3c;
+            }
+            pre {
+                background-color: #f8f8f8;
+                padding: 15px;
+                border-radius: 5px;
+                overflow-x: auto;
+                border-left: 4px solid #3498db;
+                margin: 20px 0;
+            }
+            pre code {
+                background-color: transparent;
+                padding: 0;
+                color: #333;
+            }
+            .mermaid {
+                text-align: center;
+                margin: 20px 0;
+                padding: 15px;
+                background-color: #f9f9f9;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+            ul, ol {
+                margin: 15px 0;
+                padding-left: 30px;
+            }
+            li {
+                margin: 8px 0;
+            }
+            blockquote {
+                border-left: 4px solid #3498db;
+                margin: 20px 0;
+                padding: 10px 20px;
+                background-color: #f8f9fa;
+                font-style: italic;
+            }
+            .toc {
+                background-color: #f8f9fa;
+                padding: 20px;
+                border-radius: 5px;
+                margin: 20px 0;
+                border: 1px solid #dee2e6;
+            }
+            .toc ul {
+                list-style-type: none;
+                padding-left: 0;
+            }
+            .toc li {
+                margin: 5px 0;
+            }
+            .toc a {
+                text-decoration: none;
+                color: #3498db;
+            }
+            .toc a:hover {
+                text-decoration: underline;
+            }
+            @media print {
+                body {
+                    margin: 20px;
+                    font-size: 12pt;
+                }
+                h1 { font-size: 18pt; }
+                h2 { font-size: 16pt; }
+                h3 { font-size: 14pt; }
+                h4 { font-size: 12pt; }
+                table { font-size: 10pt; }
+                pre { font-size: 9pt; }
+            }
+            </style>
+            
+            </head>
+            <body>
+                <div class="toc">
+                    <h2>Table of Contents</h2>
+                    <ul>
+                        <li><a href="#introduction">1. Introduction</a></li>
+                        <li><a href="#system-overview">2. System Overview</a></li>
+                        <li><a href="#functional-requirements">3. Functional Requirements</a></li>
+                        <li><a href="#non-functional-requirements">4. Non-Functional Requirements</a></li>
+                        <li><a href="#system-architecture">5. System Architecture</a></li>
+                        <li><a href="#database-design">6. Database Design</a></li>
+                        <li><a href="#user-interface-requirements">7. User Interface Requirements</a></li>
+                        <li><a href="#security-requirements">8. Security Requirements</a></li>
+                        <li><a href="#performance-requirements">9. Performance Requirements</a></li>
+                        <li><a href="#testing-requirements">10. Testing Requirements</a></li>
+                        <li><a href="#deployment-requirements">11. Deployment Requirements</a></li>
+                    </ul>
+                </div>
+                
+                <h1>Software Requirements Specification (SRS)</h1>
+
+<h2>VisceralBug - Bug Tracking System</h2>
+
+<p><strong>Version:</strong> 1.0<br />
+<strong>Date:</strong> December 2024<br />
+<strong>Project:</strong> VisceralBug Bug Tracking Application<br />
+<strong>Team:</strong> Utsav Gavli, Vaishnavli Kulkarni, Rahul Patil, Pratik Jadhav, Ritik Dongre</p>
+
+<hr />
+
+<h2>Table of Contents</h2>
+
+<ol>
+<li><a href="#1-introduction">Introduction</a></li>
+<li><a href="#2-system-overview">System Overview</a></li>
+<li><a href="#3-functional-requirements">Functional Requirements</a></li>
+<li><a href="#4-non-functional-requirements">Non-Functional Requirements</a></li>
+<li><a href="#5-system-architecture">System Architecture</a></li>
+<li><a href="#6-database-design">Database Design</a></li>
+<li><a href="#7-user-interface-requirements">User Interface Requirements</a></li>
+<li><a href="#8-security-requirements">Security Requirements</a></li>
+<li><a href="#9-performance-requirements">Performance Requirements</a></li>
+<li><a href="#10-testing-requirements">Testing Requirements</a></li>
+<li><a href="#11-deployment-requirements">Deployment Requirements</a></li>
+</ol>
+
+<hr />
+
+<h2>1. Introduction</h2>
+
+<h3>1.1 Purpose</h3>
+
+<p>This document provides a comprehensive specification for the VisceralBug bug tracking system, a web-based application designed to help software development teams efficiently manage and track bugs and tasks throughout the development lifecycle.</p>
+
+<h3>1.2 Scope</h3>
+
+<p>The VisceralBug system provides:
+- Role-based access control (Admin, Developer, Tester)
+- Project and team management
+- Bug reporting and tracking
+- Task management
+- Real-time notifications
+- Email integration
+- File/image upload capabilities
+- Breach detection and monitoring
+- Comprehensive logging and reporting</p>
+
+<h3>1.3 Definitions and Acronyms</h3>
+
+<ul>
+<li><strong>Bug</strong>: A software defect or issue reported by testers</li>
+<li><strong>Task</strong>: A development task assigned by developers to testers</li>
+<li><strong>Breach</strong>: When a bug exceeds its time limit without resolution</li>
+<li><strong>JWT</strong>: JSON Web Token for authentication</li>
+<li><strong>API</strong>: Application Programming Interface</li>
+<li><strong>SRS</strong>: Software Requirements Specification</li>
+</ul>
+
+<hr />
+
+<h2>2. System Overview</h2>
+
+<h3>2.1 System Description</h3>
+
+<p>VisceralBug is a full-stack web application built with:
+- <strong>Frontend</strong>: React.js with modern UI/UX design
+- <strong>Backend</strong>: Spring Boot with Java 17
+- <strong>Database</strong>: MySQL with JPA/Hibernate
+- <strong>Authentication</strong>: JWT-based security
+- <strong>Email</strong>: SMTP integration for notifications</p>
+
+<h3>2.2 System Context</h3>
+
+<p>The system serves three primary user roles:
+1. <strong>Administrators</strong>: Manage projects, users, and system-wide operations
+2. <strong>Developers</strong>: Handle bug resolution and task creation
+3. <strong>Testers</strong>: Report bugs and verify fixes</p>
+
+<hr />
+
+<h2>3. Functional Requirements</h2>
+
+<h3>3.1 User Management</h3>
+
+<h4>3.1.1 User Registration</h4>
+
+<ul>
+<li><strong>FR-1.1</strong>: System shall allow user registration with username, email, password, and role</li>
+<li><strong>FR-1.2</strong>: Password must meet security requirements (8+ chars, capital letter, number, special char)</li>
+<li><strong>FR-1.3</strong>: Only initial admin (ID=1) can create other admin accounts</li>
+<li><strong>FR-1.4</strong>: System shall validate unique username and email addresses</li>
+</ul>
+
+<h4>3.1.2 User Authentication</h4>
+
+<ul>
+<li><strong>FR-1.5</strong>: System shall provide JWT-based login authentication</li>
+<li><strong>FR-1.6</strong>: System shall maintain session state using JWT tokens</li>
+<li><strong>FR-1.7</strong>: System shall support role-based access control</li>
+</ul>
+
+<h3>3.2 Project Management</h3>
+
+<h4>3.2.1 Project Creation</h4>
+
+<ul>
+<li><strong>FR-2.1</strong>: Admins shall create projects with name and description</li>
+<li><strong>FR-2.2</strong>: System shall assign project creator as admin</li>
+<li><strong>FR-2.3</strong>: System shall support multiple developers and testers per project</li>
+</ul>
+
+<h4>3.2.2 Project Assignment</h4>
+
+<ul>
+<li><strong>FR-2.4</strong>: Admins shall assign developers and testers to projects</li>
+<li><strong>FR-2.5</strong>: Users shall view their assigned projects</li>
+<li><strong>FR-2.6</strong>: System shall maintain many-to-many relationships between users and projects</li>
+</ul>
+
+<h3>3.3 Bug Management</h3>
+
+<h4>3.3.1 Bug Reporting</h4>
+
+<ul>
+<li><strong>FR-3.1</strong>: Testers shall create bug reports with title, description, priority, and project</li>
+<li><strong>FR-3.2</strong>: System shall support image uploads for bug documentation</li>
+<li><strong>FR-3.3</strong>: System shall automatically set bug status to "OPEN"</li>
+<li><strong>FR-3.4</strong>: System shall send email notifications to project admin on bug creation</li>
+</ul>
+
+<h4>3.3.2 Bug Assignment</h4>
+
+<ul>
+<li><strong>FR-3.5</strong>: Admins shall assign bugs to developers</li>
+<li><strong>FR-3.6</strong>: Developers shall reassign bugs to other developers</li>
+<li><strong>FR-3.7</strong>: System shall send email notifications to assigned developers</li>
+<li><strong>FR-3.8</strong>: System shall maintain assignment history</li>
+</ul>
+
+<h4>3.3.3 Bug Status Updates</h4>
+
+<ul>
+<li><strong>FR-3.9</strong>: Developers shall update bug status (IN_PROGRESS, RESOLVED)</li>
+<li><strong>FR-3.10</strong>: Developers shall add resolution notes and images</li>
+<li><strong>FR-3.11</strong>: System shall maintain status change timestamps</li>
+<li><strong>FR-3.12</strong>: System shall send email notifications on status changes</li>
+</ul>
+
+<h4>3.3.4 Bug Verification</h4>
+
+<ul>
+<li><strong>FR-3.13</strong>: Testers shall verify resolved bugs</li>
+<li><strong>FR-3.14</strong>: Testers shall reopen bugs if resolution is unsatisfactory</li>
+<li><strong>FR-3.15</strong>: Testers shall close bugs after verification</li>
+<li><strong>FR-3.16</strong>: Testers shall reassign bugs to different developers</li>
+</ul>
+
+<h3>3.4 Task Management</h3>
+
+<h4>3.4.1 Task Creation</h4>
+
+<ul>
+<li><strong>FR-4.1</strong>: Developers shall create tasks for testers</li>
+<li><strong>FR-4.2</strong>: Tasks shall include title, description, priority, and project</li>
+<li><strong>FR-4.3</strong>: System shall support image uploads for task documentation</li>
+</ul>
+
+<h4>3.4.2 Task Assignment</h4>
+
+<ul>
+<li><strong>FR-4.4</strong>: Developers shall assign tasks to testers</li>
+<li><strong>FR-4.5</strong>: System shall maintain task assignment history</li>
+<li><strong>FR-4.6</strong>: System shall support task status tracking (UNASSIGNED, ASSIGNED, CLOSED)</li>
+</ul>
+
+<h3>3.5 Breach Detection</h3>
+
+<h4>3.5.1 Time Monitoring</h4>
+
+<ul>
+<li><strong>FR-5.1</strong>: System shall monitor bug resolution time</li>
+<li><strong>FR-5.2</strong>: System shall detect breaches (3.5 minutes for demo, configurable)</li>
+<li><strong>FR-5.3</strong>: System shall mark bugs as breached when time limit exceeded</li>
+<li><strong>FR-5.4</strong>: System shall provide breached bug isolation and highlighting</li>
+</ul>
+
+<h4>3.5.2 Breach Management</h4>
+
+<ul>
+<li><strong>FR-5.5</strong>: Admins shall view all breached bugs</li>
+<li><strong>FR-5.6</strong>: System shall provide real-time breach monitoring</li>
+<li><strong>FR-5.7</strong>: System shall auto-refresh breach status every 30 seconds</li>
+</ul>
+
+<h3>3.6 Logging and History</h3>
+
+<h4>3.6.1 Activity Logging</h4>
+
+<ul>
+<li><strong>FR-6.1</strong>: System shall log all bug status changes</li>
+<li><strong>FR-6.2</strong>: System shall log all task status changes</li>
+<li><strong>FR-6.3</strong>: Logs shall include user, timestamp, status, and notes</li>
+<li><strong>FR-6.4</strong>: System shall support image attachments in logs</li>
+</ul>
+
+<h4>3.6.2 History Tracking</h4>
+
+<ul>
+<li><strong>FR-6.5</strong>: Users shall view bug and task history</li>
+<li><strong>FR-6.6</strong>: System shall maintain complete audit trail</li>
+<li><strong>FR-6.7</strong>: System shall support timeline visualization</li>
+</ul>
+
+<h3>3.7 Reporting</h3>
+
+<h4>3.7.1 Bug Reports</h4>
+
+<ul>
+<li><strong>FR-7.1</strong>: System shall generate bug reports by project</li>
+<li><strong>FR-7.2</strong>: System shall filter bugs by status, priority, and date range</li>
+<li><strong>FR-7.3</strong>: System shall provide breached bug reports</li>
+<li><strong>FR-7.4</strong>: System shall support role-based report access</li>
+</ul>
+
+<h4>3.7.2 Task Reports</h4>
+
+<ul>
+<li><strong>FR-7.5</strong>: System shall generate task reports</li>
+<li><strong>FR-7.6</strong>: System shall track task completion rates</li>
+<li><strong>FR-7.7</strong>: System shall provide task assignment analytics</li>
+</ul>
+
+<h3>3.8 Email Notifications</h3>
+
+<h4>3.8.1 Notification System</h4>
+
+<ul>
+<li><strong>FR-8.1</strong>: System shall send email notifications for bug creation</li>
+<li><strong>FR-8.2</strong>: System shall send email notifications for bug assignment</li>
+<li><strong>FR-8.3</strong>: System shall send email notifications for status changes</li>
+<li><strong>FR-8.4</strong>: System shall support CC functionality for project admins</li>
+</ul>
+
+<hr />
+
+<h2>4. Non-Functional Requirements</h2>
+
+<h3>4.1 Performance</h3>
+
+<ul>
+<li><strong>NFR-1.1</strong>: System shall respond to user requests within 2 seconds</li>
+<li><strong>NFR-1.2</strong>: System shall support concurrent users (minimum 50)</li>
+<li><strong>NFR-1.3</strong>: System shall handle image uploads up to 10MB</li>
+<li><strong>NFR-1.4</strong>: Database queries shall complete within 1 second</li>
+</ul>
+
+<h3>4.2 Security</h3>
+
+<ul>
+<li><strong>NFR-2.1</strong>: All passwords shall be encrypted using BCrypt</li>
+<li><strong>NFR-2.2</strong>: JWT tokens shall expire after 24 hours</li>
+<li><strong>NFR-2.3</strong>: System shall validate all user inputs</li>
+<li><strong>NFR-2.4</strong>: System shall prevent SQL injection attacks</li>
+<li><strong>NFR-2.5</strong>: System shall implement CORS policies</li>
+</ul>
+
+<h3>4.3 Reliability</h3>
+
+<ul>
+<li><strong>NFR-3.1</strong>: System shall be available 99% of the time</li>
+<li><strong>NFR-3.2</strong>: System shall handle database connection failures gracefully</li>
+<li><strong>NFR-3.3</strong>: System shall provide error logging and monitoring</li>
+</ul>
+
+<h3>4.4 Usability</h3>
+
+<ul>
+<li><strong>NFR-4.1</strong>: Interface shall be responsive and mobile-friendly</li>
+<li><strong>NFR-4.2</strong>: System shall provide intuitive navigation</li>
+<li><strong>NFR-4.3</strong>: System shall support modern web browsers</li>
+<li><strong>NFR-4.4</strong>: System shall provide clear error messages</li>
+</ul>
+
+<hr />
+
+<h2>5. System Architecture</h2>
+
+<h3>5.1 Technology Stack</h3>
+
+<h4>5.1.1 Frontend</h4>
+
+<ul>
+<li><strong>Framework</strong>: React.js 18.2.0</li>
+<li><strong>Routing</strong>: React Router DOM 6.22.3</li>
+<li><strong>Styling</strong>: CSS3 with Tailwind CSS</li>
+<li><strong>HTTP Client</strong>: Axios</li>
+<li><strong>Animation</strong>: Framer Motion 12.15.0</li>
+</ul>
+
+<h4>5.1.2 Backend</h4>
+
+<ul>
+<li><strong>Framework</strong>: Spring Boot 3.4.8</li>
+<li><strong>Language</strong>: Java 17</li>
+<li><strong>Security</strong>: Spring Security with JWT</li>
+<li><strong>Database</strong>: MySQL with JPA/Hibernate</li>
+<li><strong>Email</strong>: Spring Mail with SMTP</li>
+<li><strong>Build Tool</strong>: Maven</li>
+</ul>
+
+<h3>5.2 Architecture Pattern</h3>
+
+<ul>
+<li><strong>Frontend</strong>: Single Page Application (SPA)</li>
+<li><strong>Backend</strong>: RESTful API with layered architecture</li>
+<li><strong>Database</strong>: Relational database with JPA/Hibernate ORM</li>
+<li><strong>Authentication</strong>: Stateless JWT-based authentication</li>
+</ul>
+
+<hr />
+
+<h2>6. Database Design</h2>
+
+<h3>6.1 Entity Relationship Diagram</h3>
+
+<div class="mermaid">
+erDiagram
+    USER {
+        bigint id PK
+        varchar username
+        varchar email UK
+        varchar password
+        varchar role
+    }
+
+    PROJECT {
+        bigint id PK
+        varchar name
+        text description
+        bigint created_by FK
+    }
+
+    BUG {
+        bigint id PK
+        varchar title
+        text description
+        varchar priority
+        varchar status
+        text resolution
+        longblob tester_image_blob
+        longblob original_tester_image_blob
+        boolean was_breached
+        bigint created_by_id FK
+        bigint assigned_to_id FK
+        bigint project_id FK
+        timestamp created_at
+        timestamp last_status_change
+    }
+
+    BUG_LOG {
+        bigint id PK
+        bigint bug_id FK
+        bigint user_id FK
+        varchar status
+        text text
+        longblob image_blob
+        timestamp timestamp
+    }
+
+    TASK {
+        bigint id PK
+        varchar title
+        text description
+        varchar status
+        varchar priority
+        bigint project_id FK
+        bigint created_by FK
+        bigint assigned_to FK
+        timestamp created_at
+        timestamp assigned_at
+        timestamp closed_at
+        longblob developer_image_blob
+        longblob original_developer_image_blob
+    }
+
+    TASK_LOG {
+        bigint id PK
+        bigint task_id FK
+        bigint user_id FK
+        varchar status
+        text text
+        timestamp timestamp
+        longblob image_blob
+    }
+
+    PROJECT_DEVELOPERS {
+        bigint project_id PK,FK
+        bigint developer_id PK,FK
+    }
+
+    PROJECT_TESTERS {
+        bigint project_id PK,FK
+        bigint testers_id PK,FK
+    }
+
+    %% Relationships
+    USER ||--o{ PROJECT : "creates"
+    USER ||--o{ BUG : "creates"
+    USER ||--o{ BUG : "assigned_to"
+    USER ||--o{ BUG_LOG : "creates"
+    USER ||--o{ TASK : "creates"
+    USER ||--o{ TASK : "assigned_to"
+    USER ||--o{ TASK_LOG : "creates"
+
+    PROJECT ||--o{ BUG : "contains"
+    PROJECT ||--o{ TASK : "contains"
+    PROJECT ||--o{ PROJECT_DEVELOPERS : "has"
+    PROJECT ||--o{ PROJECT_TESTERS : "has"
+
+    BUG ||--o{ BUG_LOG : "has"
+    TASK ||--o{ TASK_LOG : "has"
+
+    USER ||--o{ PROJECT_DEVELOPERS : "assigned_as"
+    USER ||--o{ PROJECT_TESTERS : "assigned_as"
+</div>
+
+<h4>6.1.1 ER Diagram Description</h4>
+
+<p>The Entity Relationship Diagram above illustrates the complete database structure of the VisceralBug system with the following key entities and relationships:</p>
+
+<h5>Core Entities:</h5>
+<ul>
+<li><strong>USER</strong>: Central entity representing all system users (Admins, Developers, Testers)</li>
+<li><strong>PROJECT</strong>: Represents software projects managed in the system</li>
+<li><strong>BUG</strong>: Represents bug reports created by testers</li>
+<li><strong>TASK</strong>: Represents development tasks created by developers</li>
+</ul>
+
+<h5>Logging Entities:</h5>
+<ul>
+<li><strong>BUG_LOG</strong>: Tracks all status changes and activities related to bugs</li>
+<li><strong>TASK_LOG</strong>: Tracks all status changes and activities related to tasks</li>
+</ul>
+
+<h5>Junction Tables:</h5>
+<ul>
+<li><strong>PROJECT_DEVELOPERS</strong>: Many-to-many relationship between projects and developers</li>
+<li><strong>PROJECT_TESTERS</strong>: Many-to-many relationship between projects and testers</li>
+</ul>
+
+<h5>Key Relationships:</h5>
+<ul>
+<li><strong>User-Project</strong>: Users can create projects and be assigned to multiple projects</li>
+<li><strong>User-Bug</strong>: Users can create bugs and be assigned to resolve bugs</li>
+<li><strong>User-Task</strong>: Users can create tasks and be assigned to complete tasks</li>
+<li><strong>Project-Bug/Task</strong>: Projects contain multiple bugs and tasks</li>
+<li><strong>Bug/Task-Log</strong>: Complete audit trail of all activities</li>
+</ul>
+
+<h5>Data Integrity Features:</h5>
+<ul>
+<li>Foreign key constraints ensure referential integrity</li>
+<li>Unique constraints on email addresses prevent duplicate registrations</li>
+<li>Timestamp fields track creation and modification times</li>
+<li>Image blob fields support file attachments for documentation</li>
+<li>Breach detection flag monitors time-based violations</li>
+</ul>
+
+<h3>6.2 Database Schema</h3>
+
+<h4>6.2.1 User Table</h4>
+
+<pre><code>CREATE TABLE user (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL
+);
+</code></pre>
+
+<h4>6.2.2 Project Table</h4>
+
+<pre><code>CREATE TABLE project (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    created_by BIGINT,
+    FOREIGN KEY (created_by) REFERENCES user(id)
+);
+</code></pre>
+
+<h4>6.2.3 Project_Developers Table</h4>
+
+<pre><code>CREATE TABLE project_developers (
+    project_id BIGINT,
+    developer_id BIGINT,
+    PRIMARY KEY (project_id, developer_id),
+    FOREIGN KEY (project_id) REFERENCES project(id),
+    FOREIGN KEY (developer_id) REFERENCES user(id)
+);
+</code></pre>
+
+<h4>6.2.4 Project_Testers Table</h4>
+
+<pre><code>CREATE TABLE project_testers (
+    project_id BIGINT,
+    testers_id BIGINT,
+    PRIMARY KEY (project_id, testers_id),
+    FOREIGN KEY (project_id) REFERENCES project(id),
+    FOREIGN KEY (testers_id) REFERENCES user(id)
+);
+</code></pre>
+
+<h4>6.2.5 Bug Table</h4>
+
+<pre><code>CREATE TABLE bug (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    priority VARCHAR(50),
+    status VARCHAR(50) DEFAULT 'OPEN',
+    resolution TEXT,
+    tester_image_blob LONGBLOB,
+    original_tester_image_blob LONGBLOB,
+    was_breached BOOLEAN DEFAULT FALSE,
+    created_by_id BIGINT,
+    assigned_to_id BIGINT,
+    project_id BIGINT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_status_change TIMESTAMP,
+    FOREIGN KEY (created_by_id) REFERENCES user(id),
+    FOREIGN KEY (assigned_to_id) REFERENCES user(id),
+    FOREIGN KEY (project_id) REFERENCES project(id)
+);
+</code></pre>
+
+<h4>6.2.6 Bug_Log Table</h4>
+
+<pre><code>CREATE TABLE bug_log (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    bug_id BIGINT,
+    user_id BIGINT,
+    status VARCHAR(50),
+    text TEXT,
+    image_blob LONGBLOB,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (bug_id) REFERENCES bug(id),
+    FOREIGN KEY (user_id) REFERENCES user(id)
+);
+</code></pre>
+
+<h4>6.2.7 Task Table</h4>
+
+<pre><code>CREATE TABLE task (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    status VARCHAR(50) DEFAULT 'UNASSIGNED',
+    priority VARCHAR(50) DEFAULT 'MEDIUM',
+    project_id BIGINT NOT NULL,
+    created_by BIGINT NOT NULL,
+    assigned_to BIGINT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    assigned_at TIMESTAMP,
+    closed_at TIMESTAMP,
+    developer_image_blob LONGBLOB,
+    original_developer_image_blob LONGBLOB,
+    FOREIGN KEY (project_id) REFERENCES project(id),
+    FOREIGN KEY (created_by) REFERENCES user(id),
+    FOREIGN KEY (assigned_to) REFERENCES user(id)
+);
+</code></pre>
+
+<h4>6.2.8 Task_Log Table</h4>
+
+<pre><code>CREATE TABLE task_logs (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    task_id BIGINT NOT NULL,
+    user_id BIGINT NOT NULL,
+    status VARCHAR(50) NOT NULL,
+    text TEXT,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    image_blob LONGBLOB,
+    FOREIGN KEY (task_id) REFERENCES task(id),
+    FOREIGN KEY (user_id) REFERENCES user(id)
+);
+</code></pre>
+
+<h3>6.3 Indexes</h3>
+
+<ul>
+<li>Primary keys on all tables</li>
+<li>Unique index on user.email</li>
+<li>Indexes on foreign key columns</li>
+<li>Indexes on frequently queried columns (status, priority, created_at)</li>
+</ul>
+
+<h3>6.4 Data Dictionary</h3>
+
+<h4>6.4.1 User Entity</h4>
+
+<table>
+<thead>
+<tr>
+  <th>Field</th>
+  <th>Type</th>
+  <th>Description</th>
+  <th>Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>id</td>
+  <td>BIGINT</td>
+  <td>Unique identifier</td>
+  <td>Primary Key, Auto Increment</td>
+</tr>
+<tr>
+  <td>username</td>
+  <td>VARCHAR(255)</td>
+  <td>User's display name</td>
+  <td>NOT NULL</td>
+</tr>
+<tr>
+  <td>email</td>
+  <td>VARCHAR(255)</td>
+  <td>User's email address</td>
+  <td>NOT NULL, UNIQUE</td>
+</tr>
+<tr>
+  <td>password</td>
+  <td>VARCHAR(255)</td>
+  <td>Encrypted password</td>
+  <td>NOT NULL</td>
+</tr>
+<tr>
+  <td>role</td>
+  <td>VARCHAR(50)</td>
+  <td>User role (ADMIN/DEVELOPER/TESTER)</td>
+  <td>NOT NULL</td>
+</tr>
+</tbody>
+</table>
+
+<h4>6.4.2 Project Entity</h4>
+
+<table>
+<thead>
+<tr>
+  <th>Field</th>
+  <th>Type</th>
+  <th>Description</th>
+  <th>Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>id</td>
+  <td>BIGINT</td>
+  <td>Unique identifier</td>
+  <td>Primary Key, Auto Increment</td>
+</tr>
+<tr>
+  <td>name</td>
+  <td>VARCHAR(255)</td>
+  <td>Project name</td>
+  <td>NOT NULL</td>
+</tr>
+<tr>
+  <td>description</td>
+  <td>TEXT</td>
+  <td>Project description</td>
+  <td>NULL</td>
+</tr>
+<tr>
+  <td>created_by</td>
+  <td>BIGINT</td>
+  <td>User who created the project</td>
+  <td>Foreign Key to User.id</td>
+</tr>
+</tbody>
+</table>
+
+<h4>6.4.3 Bug Entity</h4>
+
+<table>
+<thead>
+<tr>
+  <th>Field</th>
+  <th>Type</th>
+  <th>Description</th>
+  <th>Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>id</td>
+  <td>BIGINT</td>
+  <td>Unique identifier</td>
+  <td>Primary Key, Auto Increment</td>
+</tr>
+<tr>
+  <td>title</td>
+  <td>VARCHAR(255)</td>
+  <td>Bug title</td>
+  <td>NOT NULL</td>
+</tr>
+<tr>
+  <td>description</td>
+  <td>TEXT</td>
+  <td>Bug description</td>
+  <td>NULL</td>
+</tr>
+<tr>
+  <td>priority</td>
+  <td>VARCHAR(50)</td>
+  <td>Bug priority (LOW/MEDIUM/HIGH/CRITICAL)</td>
+  <td>NULL</td>
+</tr>
+<tr>
+  <td>status</td>
+  <td>VARCHAR(50)</td>
+  <td>Bug status</td>
+  <td>DEFAULT 'OPEN'</td>
+</tr>
+<tr>
+  <td>resolution</td>
+  <td>TEXT</td>
+  <td>Resolution notes</td>
+  <td>NULL</td>
+</tr>
+<tr>
+  <td>tester_image_blob</td>
+  <td>LONGBLOB</td>
+  <td>Bug screenshot</td>
+  <td>NULL</td>
+</tr>
+<tr>
+  <td>original_tester_image_blob</td>
+  <td>LONGBLOB</td>
+  <td>Original bug screenshot</td>
+  <td>NULL</td>
+</tr>
+<tr>
+  <td>was_breached</td>
+  <td>BOOLEAN</td>
+  <td>Breach flag</td>
+  <td>DEFAULT FALSE</td>
+</tr>
+<tr>
+  <td>created_by_id</td>
+  <td>BIGINT</td>
+  <td>Bug creator</td>
+  <td>Foreign Key to User.id</td>
+</tr>
+<tr>
+  <td>assigned_to_id</td>
+  <td>BIGINT</td>
+  <td>Assigned developer</td>
+  <td>Foreign Key to User.id</td>
+</tr>
+<tr>
+  <td>project_id</td>
+  <td>BIGINT</td>
+  <td>Associated project</td>
+  <td>Foreign Key to Project.id</td>
+</tr>
+<tr>
+  <td>created_at</td>
+  <td>TIMESTAMP</td>
+  <td>Creation timestamp</td>
+  <td>DEFAULT CURRENT_TIMESTAMP</td>
+</tr>
+<tr>
+  <td>last_status_change</td>
+  <td>TIMESTAMP</td>
+  <td>Last status update</td>
+  <td>NULL</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h2>7. User Interface Requirements</h2>
+
+<h3>7.1 Dashboard Requirements</h3>
+
+<ul>
+<li><strong>UI-1.1</strong>: Role-specific dashboards for Admin, Developer, and Tester</li>
+<li><strong>UI-1.2</strong>: Real-time statistics and metrics</li>
+<li><strong>UI-1.3</strong>: Quick access to assigned projects and tasks</li>
+<li><strong>UI-1.4</strong>: Breach monitoring and alerts</li>
+</ul>
+
+<h3>7.2 Navigation Requirements</h3>
+
+<ul>
+<li><strong>UI-2.1</strong>: Intuitive navigation menu</li>
+<li><strong>UI-2.2</strong>: Breadcrumb navigation</li>
+<li><strong>UI-2.3</strong>: Responsive design for mobile devices</li>
+<li><strong>UI-2.4</strong>: Consistent styling across all pages</li>
+</ul>
+
+<h3>7.3 Form Requirements</h3>
+
+<ul>
+<li><strong>UI-3.1</strong>: User-friendly input forms</li>
+<li><strong>UI-3.2</strong>: Form validation with clear error messages</li>
+<li><strong>UI-3.3</strong>: File upload capabilities with preview</li>
+<li><strong>UI-3.4</strong>: Auto-save functionality for long forms</li>
+</ul>
+
+<h3>7.4 Table Requirements</h3>
+
+<ul>
+<li><strong>UI-4.1</strong>: Sortable and filterable data tables</li>
+<li><strong>UI-4.2</strong>: Pagination for large datasets</li>
+<li><strong>UI-4.3</strong>: Export functionality for reports</li>
+<li><strong>UI-4.4</strong>: Real-time updates and refresh</li>
+</ul>
+
+<hr />
+
+<h2>8. Security Requirements</h2>
+
+<h3>8.1 Authentication</h3>
+
+<ul>
+<li><strong>SEC-1.1</strong>: JWT-based token authentication</li>
+<li><strong>SEC-1.2</strong>: Token expiration and refresh mechanism</li>
+<li><strong>SEC-1.3</strong>: Secure password storage with BCrypt</li>
+<li><strong>SEC-1.4</strong>: Role-based access control</li>
+</ul>
+
+<h3>8.2 Authorization</h3>
+
+<ul>
+<li><strong>SEC-2.1</strong>: Resource-level access control</li>
+<li><strong>SEC-2.2</strong>: User can only access their assigned projects</li>
+<li><strong>SEC-2.3</strong>: Developers can only modify assigned bugs</li>
+<li><strong>SEC-2.4</strong>: Testers can only modify their created bugs</li>
+</ul>
+
+<h3>8.3 Data Protection</h3>
+
+<ul>
+<li><strong>SEC-3.1</strong>: Input validation and sanitization</li>
+<li><strong>SEC-3.2</strong>: SQL injection prevention</li>
+<li><strong>SEC-3.3</strong>: XSS attack prevention</li>
+<li><strong>SEC-3.4</strong>: CSRF protection</li>
+</ul>
+
+<hr />
+
+<h2>9. Performance Requirements</h2>
+
+<h3>9.1 Response Time</h3>
+
+<ul>
+<li><strong>PERF-1.1</strong>: Page load time &lt; 3 seconds</li>
+<li><strong>PERF-1.2</strong>: API response time &lt; 2 seconds</li>
+<li><strong>PERF-1.3</strong>: Image upload processing &lt; 5 seconds</li>
+<li><strong>PERF-1.4</strong>: Database query execution &lt; 1 second</li>
+</ul>
+
+<h3>9.2 Scalability</h3>
+
+<ul>
+<li><strong>PERF-2.1</strong>: Support for 100+ concurrent users</li>
+<li><strong>PERF-2.2</strong>: Handle 1000+ bugs per project</li>
+<li><strong>PERF-2.3</strong>: Support for 50+ projects</li>
+<li><strong>PERF-2.4</strong>: Efficient memory usage</li>
+</ul>
+
+<h3>9.3 Availability</h3>
+
+<ul>
+<li><strong>PERF-3.1</strong>: 99% uptime requirement</li>
+<li><strong>PERF-3.2</strong>: Graceful error handling</li>
+<li><strong>PERF-3.3</strong>: Automatic recovery from failures</li>
+<li><strong>PERF-3.4</strong>: Backup and restore capabilities</li>
+</ul>
+
+<hr />
+
+<h2>10. Testing Requirements</h2>
+
+<h3>10.1 Unit Testing</h3>
+
+<ul>
+<li><strong>TEST-1.1</strong>: 80% code coverage requirement</li>
+<li><strong>TEST-1.2</strong>: Test all service layer methods</li>
+<li><strong>TEST-1.3</strong>: Test all controller endpoints</li>
+<li><strong>TEST-1.4</strong>: Test data validation logic</li>
+</ul>
+
+<h3>10.2 Integration Testing</h3>
+
+<ul>
+<li><strong>TEST-2.1</strong>: Test database operations</li>
+<li><strong>TEST-2.2</strong>: Test email service integration</li>
+<li><strong>TEST-2.3</strong>: Test file upload functionality</li>
+<li><strong>TEST-2.4</strong>: Test authentication flow</li>
+</ul>
+
+<h3>10.3 User Acceptance Testing</h3>
+
+<ul>
+<li><strong>TEST-3.1</strong>: Test all user workflows</li>
+<li><strong>TEST-3.2</strong>: Test role-based access</li>
+<li><strong>TEST-3.3</strong>: Test breach detection</li>
+<li><strong>TEST-3.4</strong>: Test email notifications</li>
+</ul>
+
+<hr />
+
+<h2>11. Deployment Requirements</h2>
+
+<h3>11.1 Environment Requirements</h3>
+
+<ul>
+<li><strong>DEP-1.1</strong>: Java 17 runtime environment</li>
+<li><strong>DEP-1.2</strong>: MySQL 8.0+ database</li>
+<li><strong>DEP-1.3</strong>: Node.js 16+ for frontend build</li>
+<li><strong>DEP-1.4</strong>: SMTP server for email notifications</li>
+</ul>
+
+<h3>11.2 Configuration</h3>
+
+<ul>
+<li><strong>DEP-2.1</strong>: Environment-specific configuration files</li>
+<li><strong>DEP-2.2</strong>: Database connection configuration</li>
+<li><strong>DEP-2.3</strong>: JWT secret configuration</li>
+<li><strong>DEP-2.4</strong>: Email server configuration</li>
+</ul>
+
+<h3>11.3 Deployment Process</h3>
+
+<ul>
+<li><strong>DEP-3.1</strong>: Automated build process with Maven</li>
+<li><strong>DEP-3.2</strong>: Frontend build optimization</li>
+<li><strong>DEP-3.3</strong>: Database migration scripts</li>
+<li><strong>DEP-3.4</strong>: Health check endpoints</li>
+</ul>
+
+<hr />
+
+<h2>Appendix</h2>
+
+<h3>A. API Endpoints</h3>
+
+<h4>Authentication</h4>
+
+<ul>
+<li><code>POST /api/auth/login</code> - User login</li>
+<li><code>POST /api/auth/register</code> - User registration</li>
+<li><code>GET /api/auth/users</code> - Get users by role</li>
+</ul>
+
+<h4>Projects</h4>
+
+<ul>
+<li><code>GET /api/projects</code> - Get user's projects</li>
+<li><code>POST /api/projects</code> - Create project</li>
+<li><code>PUT /api/projects/{id}/developers</code> - Assign developers</li>
+<li><code>PUT /api/projects/{id}/testers</code> - Assign testers</li>
+</ul>
+
+<h4>Bugs</h4>
+
+<ul>
+<li><code>GET /api/bugs</code> - Get bugs with filters</li>
+<li><code>POST /api/bugs</code> - Create bug</li>
+<li><code>PUT /api/bugs/{id}/assign/{developerId}</code> - Assign bug</li>
+<li><code>PUT /api/bugs/{id}/status</code> - Update bug status</li>
+<li><code>GET /api/bugs/{id}/logs</code> - Get bug logs</li>
+<li><code>POST /api/bugs/{id}/log</code> - Add bug log</li>
+</ul>
+
+<h4>Tasks</h4>
+
+<ul>
+<li><code>GET /api/tasks</code> - Get tasks</li>
+<li><code>POST /api/tasks</code> - Create task</li>
+<li><code>PUT /api/tasks/{id}/assign/{testerId}</code> - Assign task</li>
+<li><code>PUT /api/tasks/{id}/status</code> - Update task status</li>
+</ul>
+
+<h3>B. Error Codes</h3>
+
+<ul>
+<li><code>400</code> - Bad Request</li>
+<li><code>401</code> - Unauthorized</li>
+<li><code>403</code> - Forbidden</li>
+<li><code>404</code> - Not Found</li>
+<li><code>500</code> - Internal Server Error</li>
+</ul>
+
+<h3>C. Status Values</h3>
+
+<ul>
+<li><strong>Bug Status</strong>: OPEN, ASSIGNED, IN_PROGRESS, RESOLVED, CLOSED</li>
+<li><strong>Task Status</strong>: UNASSIGNED, ASSIGNED, CLOSED</li>
+<li><strong>Priority</strong>: LOW, MEDIUM, HIGH, CRITICAL</li>
+<li><strong>User Roles</strong>: ADMIN, DEVELOPER, TESTER</li>
+</ul>
+
+<h3>D. System Workflows</h3>
+
+<h4>D.1 Bug Lifecycle Workflow</h4>
+
+<pre><code>1. Tester creates bug → Status: OPEN
+2. Admin assigns to Developer → Status: ASSIGNED
+3. Developer works on bug → Status: IN_PROGRESS
+4. Developer resolves bug → Status: RESOLVED
+5. Tester verifies fix → Status: CLOSED (or back to IN_PROGRESS)
+</code></pre>
+
+<h4>D.2 Task Lifecycle Workflow</h4>
+
+<pre><code>1. Developer creates task → Status: UNASSIGNED
+2. Developer assigns to Tester → Status: ASSIGNED
+3. Tester completes task → Status: CLOSED
+</code></pre>
+
+<h4>D.3 Breach Detection Workflow</h4>
+
+<pre><code>1. Bug assigned to Developer
+2. System monitors time elapsed
+3. If time &gt; threshold (3.5 min demo) → Mark as BREACHED
+4. Admin notified of breached bugs
+5. Developer can still work on breached bugs
+</code></pre>
+
+<hr />
+
+<p><strong>Document End</strong> </p>
+
+                
+                <script>
+                // Add smooth scrolling for table of contents links
+                document.querySelectorAll('.toc a').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href').substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+                </script>
+            </body>
+            </html>
+            
