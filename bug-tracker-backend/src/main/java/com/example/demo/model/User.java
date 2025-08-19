@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "users") 
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class User {
 
