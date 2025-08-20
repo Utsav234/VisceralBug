@@ -30,6 +30,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/bugs")
+@CrossOrigin(origins = "", allowCredentials = "true")
 @RequiredArgsConstructor
 public class BugController {
 
